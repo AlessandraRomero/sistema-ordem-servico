@@ -25,7 +25,6 @@ public class Servidor implements Serializable {
 	}
 
 	public Servidor(Long id, String nome, String telefone, String email, String senha) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.telefone = telefone;

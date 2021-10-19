@@ -11,7 +11,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.ResourceAccessException;
 
 import br.edu.ifms.ordemservico.dto.ServidorDTO;
 import br.edu.ifms.ordemservico.entities.Servidor;
@@ -28,7 +27,7 @@ public class ServidorService {
 	@Transactional(readOnly = true)
 	public List<ServidorDTO> findAll() {
 		List<Servidor> list = repository.findAll();
-		return list.stream().map(servidor -> new ServidorDTO()).collect(Collectors.toList());
+		return list.stream().map(servidor -> new ServidorDTO(servidor)).collect(Collectors.toList());
 	}
 
 	@Transactional(readOnly = true)

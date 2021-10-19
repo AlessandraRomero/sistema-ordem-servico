@@ -28,7 +28,7 @@ public class OrdemDeServicoService {
 	@Transactional(readOnly = true)
 	public List<OrdemDeServicoDTO> findAll() {
 		List<OrdemDeServico> list = repository.findAll();
-		return list.stream().map(ordem -> new OrdemDeServicoDTO()).collect(Collectors.toList());
+		return list.stream().map(ordem -> new OrdemDeServicoDTO(ordem)).collect(Collectors.toList());
 	}
 
 	@Transactional(readOnly = true)
