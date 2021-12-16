@@ -21,7 +21,7 @@ import br.edu.ifms.ordemservico.dto.ClienteDTO;
 import br.edu.ifms.ordemservico.services.ClienteService;
 
 @RestController
-@RequestMapping(value = "/cliente")
+@RequestMapping(value = "/clientes")
 public class ClienteResource {
 
 	@Autowired
