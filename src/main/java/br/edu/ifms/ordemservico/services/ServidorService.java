@@ -16,6 +16,7 @@ import br.edu.ifms.ordemservico.dto.ServidorDTO;
 import br.edu.ifms.ordemservico.entities.Servidor;
 import br.edu.ifms.ordemservico.repositories.ServidorRepository;
 import br.edu.ifms.ordemservico.services.exceptions.DataBaseException;
+import br.edu.ifms.ordemservico.services.exceptions.RegraNegocioException;
 import br.edu.ifms.ordemservico.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -23,6 +24,15 @@ public class ServidorService {
 
 	@Autowired
 	private ServidorRepository repository;
+	
+	public ServidorDTO autenticar(String email, String senha) {
+	Optional<Servidor> obj = repository.findByEmail(email);
+	Servidor servidor = obj
+			.orElseThrow(() -> new ResourceNotFoundException("O servidor solicitado com esse email não existe"));
+	return new ServidorDTO(servidor);
+	
+	}
+	
 
 	@Transactional(readOnly = true)
 	public List<ServidorDTO> findAll() {
@@ -42,6 +52,8 @@ public class ServidorService {
 	public ServidorDTO insert(ServidorDTO dto) {
 		Servidor servidor = new Servidor();
 		copyDtoToEntity(dto, servidor);
+		validarEmail(servidor.getEmail());
+		servidor = repository.save(servidor);
 		return new ServidorDTO(servidor);
 	}
 
@@ -50,6 +62,7 @@ public class ServidorService {
 		try {
 			Servidor servidor = repository.getById(id);
 			copyDtoToEntity(dto, servidor);
+			validarEmail(servidor.getEmail());
 			servidor = repository.save(servidor);
 			return new ServidorDTO(servidor);
 		} catch (EntityNotFoundException e) {
@@ -76,5 +89,12 @@ public class ServidorService {
 		servidor = repository.save(servidor);
 
 	}
-
+	
+	public void validarEmail(String email) {
+	boolean existe = repository.existsByEmail(email);
+		if (existe) {
+			throw new RegraNegocioException("Já existe um servidor cadastrdo com esse email");
+		}
+	}
+	
 }

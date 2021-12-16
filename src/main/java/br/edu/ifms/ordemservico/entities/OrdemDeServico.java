@@ -1,7 +1,6 @@
 package br.edu.ifms.ordemservico.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Column;
