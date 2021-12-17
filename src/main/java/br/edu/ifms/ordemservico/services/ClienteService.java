@@ -23,7 +23,6 @@ import br.edu.ifms.ordemservico.services.exceptions.ResourceNotFoundException;
 @Service
 public class ClienteService {
 
-
 	@Autowired
 	private ClienteRepository repository;
 	

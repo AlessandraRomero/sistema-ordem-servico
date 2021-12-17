@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 
+import br.edu.ifms.ordemservico.entities.Equipamento;
 import br.edu.ifms.ordemservico.entities.OrdemDeServico;
 import br.edu.ifms.ordemservico.entities.Servidor;
 import br.edu.ifms.ordemservico.entities.enums.Prioridade;
@@ -17,7 +18,7 @@ public class OrdemDeServicoDTO implements Serializable {
 	
 	private Long id;
 	@NotBlank(message = "O campo equipamento é obrigatório")
-	private String equipamento;
+	private Equipamento equipamento;
 	@NotBlank(message = "O campo patrimonio é obrigatório")
 	private String patrimonio;
 	@NotBlank(message = "O campo setor é obrigatório")
@@ -36,7 +37,7 @@ public class OrdemDeServicoDTO implements Serializable {
 	public OrdemDeServicoDTO() {
 	}
 
-	public OrdemDeServicoDTO(Long id, String equipamento, String patrimonio, String setor, String descricaoProblema,
+	public OrdemDeServicoDTO(Long id, Equipamento equipamento, String patrimonio, String setor, String descricaoProblema,
 			Date dataCadastro, Status status, Prioridade prioridade, String descricaoSolucao, Servidor servidor) {
 		this.id = id;
 		this.equipamento = equipamento;
@@ -71,11 +72,11 @@ public class OrdemDeServicoDTO implements Serializable {
 		this.id = id;
 	}
 
-	public String getEquipamento() {
+	public Equipamento getEquipamento() {
 		return equipamento;
 	}
 
-	public void setEquipamento(String equipamento) {
+	public void setEquipamento(Equipamento equipamento) {
 		this.equipamento = equipamento;
 	}
 

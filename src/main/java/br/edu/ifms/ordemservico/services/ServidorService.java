@@ -33,7 +33,6 @@ public class ServidorService {
 	
 	}
 	
-
 	@Transactional(readOnly = true)
 	public List<ServidorDTO> findAll() {
 		List<Servidor> list = repository.findAll();

@@ -25,7 +25,9 @@ public class OrdemDeServico implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String equipamento;
+	@ManyToOne
+	@JoinColumn(name = "equipamento_id")
+	private Equipamento equipamento;
 	private String patrimonio;
 	private String setor;
 	@Column(columnDefinition = "TEXT")
@@ -45,7 +47,7 @@ public class OrdemDeServico implements Serializable {
 	public OrdemDeServico() {
 	}
 
-	public OrdemDeServico(Long id, String equipamento, String patrimonio, String setor, String descricaoProblema,
+	public OrdemDeServico(Long id, Equipamento equipamento, String patrimonio, String setor, String descricaoProblema,
 			Date dataCadastro, Status status, Prioridade prioridade, String descricaoSolucao, Servidor servidor) {
 		this.id = id;
 		this.equipamento = equipamento;
@@ -67,11 +69,11 @@ public class OrdemDeServico implements Serializable {
 		this.id = id;
 	}
 
-	public String getEquipamento() {
+	public Equipamento getEquipamento() {
 		return equipamento;
 	}
 
-	public void setEquipamento(String equipamento) {
+	public void setEquipamento(Equipamento equipamento) {
 		this.equipamento = equipamento;
 	}
 
