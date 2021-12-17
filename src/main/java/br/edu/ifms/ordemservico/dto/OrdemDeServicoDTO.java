@@ -1,7 +1,6 @@
 package br.edu.ifms.ordemservico.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 
 import javax.validation.constraints.FutureOrPresent;
