@@ -1,4 +1,4 @@
-package br.edu.ifms.ordemservico.resourses;
+package br.edu.ifms.ordemservico.resources;
 
 import java.net.URI;
 import java.util.List;

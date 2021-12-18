@@ -75,9 +75,7 @@ public class ClienteService {
 		cli.setTelefone(dto.getTelefone());
 		cli.setEmail(dto.getEmail());
 		cli.setEndereco(dto.getEndereco());
-		
 
 	}
-	
 	
 }

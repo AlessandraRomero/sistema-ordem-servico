@@ -1,4 +1,4 @@
-package br.edu.ifms.ordemservico.resourses.exeptions;
+package br.edu.ifms.ordemservico.resources.exeptions;
 
 import java.io.Serializable;
 import java.time.Instant;

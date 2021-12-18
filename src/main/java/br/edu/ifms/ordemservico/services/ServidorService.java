@@ -85,8 +85,6 @@ public class ServidorService {
 		servidor.setEmail(dto.getEmail());
 		servidor.setTelefone(dto.getTelefone());
 		servidor.setSenha(dto.getSenha());
-		servidor = repository.save(servidor);
-
 	}
 	
 	public void validarEmail(String email) {

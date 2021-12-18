@@ -1,4 +1,4 @@
-package br.edu.ifms.ordemservico.resourses;
+package br.edu.ifms.ordemservico.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -17,43 +17,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.edu.ifms.ordemservico.dto.OrdemDeServicoDTO;
-import br.edu.ifms.ordemservico.services.OrdemDeServicoService;
+import br.edu.ifms.ordemservico.dto.ServidorDTO;
+import br.edu.ifms.ordemservico.services.ServidorService;
 
 @RestController
-@RequestMapping(value = "/ordem")
-public class OrdemDeServicoResourse {
+@RequestMapping(value = "/servidores")
+public class ServidorResource {
 
 	@Autowired
-	private OrdemDeServicoService service;
+	private ServidorService service;
 
 	@GetMapping
-	public ResponseEntity<List<OrdemDeServicoDTO>> findAll() {
-		List<OrdemDeServicoDTO> lista = service.findAll();
+	public ResponseEntity<List<ServidorDTO>> findAll() {
+		List<ServidorDTO> lista = service.findAll();
 		return ResponseEntity.ok().body(lista);
 	}
 
 	@GetMapping(value = "/id")
-	public ResponseEntity<OrdemDeServicoDTO> findById(@PathVariable Long id) {
-		OrdemDeServicoDTO dto = service.findByID(id);
+	public ResponseEntity<ServidorDTO> findById(@PathVariable Long id) {
+		ServidorDTO dto = service.findByID(id);
 		return ResponseEntity.ok().body(dto);
 	}
 
 	@PostMapping
-	public ResponseEntity<OrdemDeServicoDTO> insert(@Valid @RequestBody OrdemDeServicoDTO dto) {
+	public ResponseEntity<ServidorDTO> insert(@Valid @RequestBody ServidorDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}
 
 	@PutMapping(value = "/id")
-	public ResponseEntity<OrdemDeServicoDTO> update(@Valid @PathVariable Long id, @RequestBody OrdemDeServicoDTO dto) {
+	public ResponseEntity<ServidorDTO> update(@Valid @PathVariable Long id, @RequestBody ServidorDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}
 
 	@DeleteMapping(value = "/id")
-	public ResponseEntity<OrdemDeServicoDTO> delete(@PathVariable Long id) {
+	public ResponseEntity<ServidorDTO> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

@@ -79,7 +79,6 @@ public class OrdemDeServicoService {
 		ordem.setPrioridade(dto.getPrioridade());
 		ordem.setDescricaoSolucao(dto.getDescricaoSolucao());
 		ordem.setServidor(dto.getServidor());
-		ordem = repository.save(ordem);
 
 	}
 
